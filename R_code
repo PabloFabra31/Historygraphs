@@ -1,0 +1,43 @@
+library(ggplot2)
+
+#Creating the line graph
+
+head(Histori2)
+
+
+ggplot(Histori2, aes(x=year)) + 
+  geom_line(aes(y = Tasa_hombre_esp), color = "darkred") + 
+  geom_line(aes(y = tasa_hombre_extr), color="steelblue", linetype="twodash") +
+  geom_line(aes(y = Tasa_mujer_esp), color = "darkgoldenrod1") + 
+  geom_line(aes(y = Tasa_mujer_extr), color="darkgreen", linetype="twodash") +
+  geom_point(aes(y = Tasa_hombre_esp), color = "darkred") + 
+  geom_point(aes(y = tasa_hombre_extr), color="steelblue", linetype="twodash") +
+  geom_point(aes(y = Tasa_mujer_esp), color = "darkgoldenrod1") + 
+  geom_point(aes(y = Tasa_mujer_extr), color="darkgreen", linetype="twodash") +
+  labs(
+  title = "Evolution of the employment rate by gender and nationality",
+  subtitle = "Data from 2002 to 2021",
+  caption = "Source: own elaboration
+  Data source: INE             ",
+  y = "Employment rate (%)", x = "Year",
+  color = "Legend")
+
+#Creating the legend
+
+plot(NULL ,xaxt='n',yaxt='n',bty='n',ylab='',xlab='', xlim=0:1, ylim=0:1)
+legend("topleft", legend =c('Spanish men employment rate', 'Foreign men employment rate', 'Spanish women employment rate',
+                            'Foreign women employment rate'), pch=16, pt.cex=3, cex=1.5, bty='n',
+       col = c('darkred', 'steelblue', 'darkgoldenrod1', 'darkgreen'))
+mtext("Legend", at=0.2, cex=2)
+
+#Creating the bar graph
+
+ggplot(Deffin, aes(x = Education, y = Participation, fill = Procedence)) +
+  geom_col(position = "dodge") +
+  labs(
+    title = "Participation rate regarding education by gender and nationality",
+    subtitle = "Comparing the national population with the outside EU immigration in 2021",
+    caption = "Source: Own elaboration
+  Data source: INE              ",
+    y = "Participation rate (%)", x = "Level of education achieved")
+  
