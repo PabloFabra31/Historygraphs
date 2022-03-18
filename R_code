@@ -1,6 +1,6 @@
 library(ggplot2)
 
-#Creating the line graph
+#Creating the employment rate line graph
 
 head(Histori2)
 
@@ -41,3 +41,20 @@ ggplot(Deffin, aes(x = Education, y = Participation, fill = Procedence)) +
   Data source: INE              ",
     y = "Participation rate (%)", x = "Level of education achieved")
   
+  #Creating the unemployment rate line graph
+  
+  ggplot(Unemploy, aes(x=year)) + 
+  geom_line(aes(y = Tasa_hombre_esp), color = "darkred") + 
+  geom_line(aes(y = tasa_hombre_ext), color="steelblue", linetype="twodash") +
+  geom_line(aes(y = Tasa_mujer_esp), color = "darkgoldenrod1") + 
+  geom_line(aes(y = Tasa_mujer_ext), color="darkgreen", linetype="twodash") +
+  geom_point(aes(y = Tasa_hombre_esp), color = "darkred") + 
+  geom_point(aes(y = tasa_hombre_ext), color="steelblue", linetype="twodash") +
+  geom_point(aes(y = Tasa_mujer_esp), color = "darkgoldenrod1") + 
+  geom_point(aes(y = Tasa_mujer_ext), color="darkgreen", linetype="twodash") +
+  labs(
+    title = "Evolution of the unemployment rate by gender and origin",
+    subtitle = "Data from 2002 to 2021",
+    caption = "Source: own elaboration
+  Data source: INE             ",
+    y = "Unemployment rate (%)", x = "Year")
